@@ -100,7 +100,7 @@ window.addEventListener('keydown', (e)=>{
     e.key === '9' ||
     e.key === '.' 
   ){
-    clickButtonEl(e.key)
+    clickButtonEl(e.key);
   }else if(
     e.key === '+' ||
     e.key === '-' ||
