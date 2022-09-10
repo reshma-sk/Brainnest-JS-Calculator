@@ -9,6 +9,7 @@ let secondVal = '';
 let result = null;
 let operationType = '';
 let containDot = false;
+
 //numbers
 numbers.forEach( number => {
   number.addEventListener('click', (e)=>{
@@ -41,7 +42,9 @@ operation.forEach( operation => {
 });
 function clearVar(){
   firstVal = secondVal;
-  display.innerText = Math.round(result*1000)/1000;
+   // Round to 9 decimal places
+  const tenFactor = Math.pow(10, 9);
+  display.innerText = Math.round(result*tenFactor)/tenFactor;
   secondVal = '';
 }
 //operate function
