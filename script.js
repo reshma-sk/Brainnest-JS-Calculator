@@ -9,7 +9,6 @@ let secondVal = '';
 let result = null;
 let operationType = '';
 let containDot = false;
-
 //numbers
 numbers.forEach( number => {
   number.addEventListener('click', (e)=>{
