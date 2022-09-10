@@ -76,7 +76,7 @@ equal.addEventListener('click', ()=> {
 clear.addEventListener('click', ()=>{
  firstVal = '';
  secondVal = '';
- display.innerText ='';
+ display.innerText ='0';
  result = '';
  containDot = false;
 });
