@@ -9,6 +9,7 @@ let secondVal = '';
 let result = null;
 let operationType = '';
 let containDot = false;
+//numbers
 numbers.forEach( number => {
   number.addEventListener('click', (e)=>{
     if(e.target.innerText === '.' && !containDot){
@@ -20,6 +21,7 @@ numbers.forEach( number => {
     display.innerText = secondVal;    
   })
 })
+//operators
 operation.forEach( operation => {
   operation.addEventListener('click', (e)=> {
     if (!secondVal) return;
@@ -28,7 +30,6 @@ operation.forEach( operation => {
     if (firstVal && secondVal && operationType){
       display.innerText = '';
       operate();
-      display.innerText = result;
     }
     else{
      result = parseFloat(secondVal);
@@ -40,9 +41,10 @@ operation.forEach( operation => {
 });
 function clearVar(){
   firstVal = secondVal;
-  display.innerText = result;
+  display.innerText = Math.round(result*1000)/1000;
   secondVal = '';
 }
+//operate function
 function operate() {
   if (operationType === 'x') {
     result = parseFloat(result) * parseFloat(secondVal);
@@ -63,7 +65,7 @@ equal.addEventListener('click', ()=> {
   containDot = false;
   operate();
   clearVar();
-  display.innerText = result;
+  //display.innerText = result;
   secondVal = result;
   firstVal = '';
 })
@@ -73,9 +75,58 @@ clear.addEventListener('click', ()=>{
  secondVal = '';
  display.innerText ='';
  result = '';
+ containDot = false;
 });
 //backspace operation
 clearLast.addEventListener('click', () => {
   display.innerText = display.innerText.slice(0, -1);
-  secondVal = '';
+  secondVal = display.innerText;
 })
+//keyboard suport
+window.addEventListener('keydown', (e)=>{
+  if(
+    e.key === '0' ||
+    e.key === '1' || 
+    e.key === '2' ||
+    e.key === '3' ||
+    e.key === '4' ||
+    e.key === '5' ||
+    e.key === '6' ||
+    e.key === '7' ||
+    e.key === '8' ||
+    e.key === '9' ||
+    e.key === '.' 
+  ){
+    clickButtonEl(e.key)
+  }else if(
+    e.key === '+' ||
+    e.key === '-' ||
+    e.key === '/' ||
+    e.key === '%' 
+  ){
+    clickOperation(e.key);
+  }
+  else if(e.key === '*'){
+    clickOperation('x')
+  } else if( e.key == "Enter" || e.key === '='){
+    clickEqual();
+  }
+})
+function clickButtonEl(key) {
+  numbers.forEach(button => {
+    if (button.innerText === key) {
+      button.click();
+    }
+  })
+}
+function clickOperation(key){
+  operation.forEach( operation => {
+    if(operation.innerText === key){
+      operation.click()
+    }
+  })
+}
+function clickEqual(){
+  equal.click();
+}
+

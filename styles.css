@@ -7,7 +7,6 @@
     font-family: 'Montserrat', sans-serif;
   }
   section{
-    /*background-color: rgb(216, 127, 25);*/
     min-height: 100vh;
     width: 100%;
     display: flex;
@@ -20,7 +19,11 @@
     background-color: rgb(43, 72, 104);
     border-radius: 8px;
     overflow: hidden;
-  }
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
   .display{
     background-color: rgb(182, 182, 182);
     height: 100px;
